@@ -80,7 +80,7 @@
     <div class="card-body text-start">
 
       <div class="mb-3">
-        <label>วันที่</label>
+        <label>สั่ง ณ วันที่</label>
         <input type="date" id="birthday" class="form-control">
       </div>
 
@@ -90,12 +90,12 @@
       </div>
 
       <div class="mb-3">
-        <label>ผู้ปฏิบัติ</label>
+        <label>กลุ่มงาน</label>
         <textarea id="department" class="form-control"></textarea>
       </div>
 
       <div class="mb-3">
-        <label>ผู้ใช้</label>
+        <label>ผู้บันทึก</label>
         <input id="user" class="form-control" disabled>
       </div>
 
