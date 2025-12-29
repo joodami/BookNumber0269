@@ -45,7 +45,7 @@ function login(){
     if(res.length){
       userEl.value = res[0][1];
       userformEl.classList.remove("invisible");
-      document.body.classList.add("has-userform"); // ⭐ เพิ่ม
+      document.body.classList.add("has-userform");
       post({action:"addOnline", name:res[0][1]});
     } else {
       passwordEl.classList.add("is-invalid");
@@ -85,11 +85,7 @@ function validateForm(){
 
 // ------------------ Modal / Session ------------------
 function showSessionExpiredAndReset(){
-  const modal = new bootstrap.Modal(resultModalEl, {
-    backdrop: 'static',
-    keyboard: false
-  });
-
+  const modal = new bootstrap.Modal(resultModalEl, { backdrop: 'static', keyboard: false });
   modalLoadingEl.classList.add("d-none");
   modalSuccessEl.classList.add("d-none");
   modalErrorEl.classList.remove("d-none");
@@ -114,10 +110,8 @@ function modalLoading(){
 function showSuccess(bookno){
   modalLoadingEl.classList.add("d-none");
   modalSuccessEl.classList.remove("d-none");
-  // แก้ตรงนี้ ไม่ต่อ /2569 อีกครั้ง
   showBooknoEl.innerText = `เลขคำสั่งโรงเรียน = ${bookno}`;
 }
-
 
 function showError(){
   modalLoadingEl.classList.add("d-none");
@@ -148,7 +142,7 @@ function resetToLogin(){
   passwordEl.value = "";
   userformEl.classList.add("invisible");
 
-  document.body.classList.remove("has-userform"); // ⭐ เพิ่ม
+  document.body.classList.remove("has-userform");
 
   if(userEl.value){
     post({action:"deleteOnline", name:userEl.value});
@@ -160,10 +154,7 @@ function resetToLogin(){
 function submitData(){
   if(!validateForm()) return;
 
-  const modal = new bootstrap.Modal(resultModalEl, {
-    backdrop: 'static',
-    keyboard: false
-  });
+  const modal = new bootstrap.Modal(resultModalEl, { backdrop: 'static', keyboard: false });
   modal.show();
   modalLoading();
 
