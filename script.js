@@ -19,6 +19,18 @@ const dashTodayEl = document.getElementById("dash-today");
 const dashOnlineEl = document.getElementById("dash-online");
 const loginSpinnerEl = document.getElementById("loginSpinner");
 
+// ------------------ Choices.js ------------------
+// ปรับให้สามารถพิมพ์ชื่อใหม่ได้
+const departmentChoices = new Choices(departmentEl, {
+  removeItemButton: true,
+  searchEnabled: true,
+  placeholderValue: 'เลือกหรือพิมพ์กลุ่มงาน',
+  shouldSort: false,
+  duplicateItemsAllowed: false,
+  addItems: true,
+  addItemFilter: null,
+});
+
 // ------------------ Helper ------------------
 function post(data){
   return fetch(GAS_URL,{
@@ -77,7 +89,9 @@ function validateForm(){
   if(!detailEl.value.trim()){ detailEl.classList.add("is-invalid"); valid = false; }
   else { detailEl.classList.remove("is-invalid"); }
 
-  if(!departmentEl.value.trim()){ departmentEl.classList.add("is-invalid"); valid = false; }
+  // ✅ แก้ validation ของ department ให้ตรวจจากค่า Choices
+  const depValue = departmentChoices.getValue(true).trim();
+  if(!depValue){ departmentEl.classList.add("is-invalid"); valid = false; }
   else { departmentEl.classList.remove("is-invalid"); }
 
   return valid;
@@ -85,7 +99,11 @@ function validateForm(){
 
 // ------------------ Modal / Session ------------------
 function showSessionExpiredAndReset(){
-  const modal = new bootstrap.Modal(resultModalEl, { backdrop: 'static', keyboard: false });
+  const modal = new bootstrap.Modal(resultModalEl, {
+    backdrop: 'static',
+    keyboard: false
+  });
+
   modalLoadingEl.classList.add("d-none");
   modalSuccessEl.classList.add("d-none");
   modalErrorEl.classList.remove("d-none");
@@ -138,7 +156,7 @@ function showQueueError(){
 function resetToLogin(){
   birthdayEl.value = "";
   detailEl.value = "";
-  departmentEl.value = "";
+  departmentChoices.removeActiveItems(); // ✅ เคลียร์ค่า Choices
   passwordEl.value = "";
   userformEl.classList.add("invisible");
 
@@ -154,7 +172,10 @@ function resetToLogin(){
 function submitData(){
   if(!validateForm()) return;
 
-  const modal = new bootstrap.Modal(resultModalEl, { backdrop: 'static', keyboard: false });
+  const modal = new bootstrap.Modal(resultModalEl, {
+    backdrop: 'static',
+    keyboard: false
+  });
   modal.show();
   modalLoading();
 
@@ -169,7 +190,7 @@ function submitData(){
       action:"addRecord",
       birthday: birthdayEl.value,
       detail: detailEl.value,
-      department: departmentEl.value,
+      department: departmentChoices.getValue(true), // ✅ เอาค่าที่เลือก/พิมพ์
       user: userEl.value
     }).then(res=>{
 
