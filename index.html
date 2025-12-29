@@ -90,9 +90,18 @@
       </div>
 
       <div class="mb-3">
-        <label>กลุ่มงาน</label>
-        <textarea id="department" class="form-control"></textarea>
-      </div>
+  <label>กลุ่มงาน/กลุ่มสาระ</label>
+  <input id="department" class="form-control" list="departmentList" placeholder="เลือกหรือพิมพ์กลุ่มงาน">
+  <datalist id="departmentList">
+    <option value="กลุ่มบริหารวิชาการ">
+    <option value="กลุ่มบริหารงบประมาณ">
+    <option value="กลุ่มบริหารงานบุคคล">
+    <option value="กลุ่มบริหารทั่วไป">
+    <option value="กลุ่มกิจการนักเรียน">
+    <option value="สำนักงานอำนวยการ">
+    <!-- เพิ่มตัวเลือกอื่นๆ ตามต้องการ -->
+  </datalist>
+</div>
 
       <div class="mb-3">
         <label>ผู้บันทึก</label>
