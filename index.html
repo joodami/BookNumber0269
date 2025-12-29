@@ -9,6 +9,9 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+
+  <!-- Choices.js CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css">
 </head>
 
 <body class="d-flex flex-column min-vh-100">
@@ -19,7 +22,6 @@
        class="banner-img" alt="banner">
 </div>
 
-<!-- Container -->
 <div class="container-fluid px-2 px-md-4 text-center max-width-container">
 
   <!-- Dashboard -->
@@ -89,19 +91,19 @@
         <textarea id="detail" class="form-control"></textarea>
       </div>
 
+      <!-- แก้ไข: กลุ่มงาน/กลุ่มสาระ ใช้ Choices.js -->
       <div class="mb-3">
-  <label>กลุ่มงาน/กลุ่มสาระ</label>
-  <input id="department" class="form-control" list="departmentList" placeholder="เลือกหรือพิมพ์กลุ่มงาน">
-  <datalist id="departmentList">
-    <option value="กลุ่มบริหารวิชาการ">
-    <option value="กลุ่มบริหารงบประมาณ">
-    <option value="กลุ่มบริหารงานบุคคล">
-    <option value="กลุ่มบริหารทั่วไป">
-    <option value="กลุ่มกิจการนักเรียน">
-    <option value="สำนักงานอำนวยการ">
-    <!-- เพิ่มตัวเลือกอื่นๆ ตามต้องการ -->
-  </datalist>
-</div>
+        <label>กลุ่มงาน/กลุ่มสาระ</label>
+        <select id="department" class="form-select">
+          <option value="" selected disabled>เลือกหรือพิมพ์กลุ่มงาน</option>
+          <option value="กลุ่มบริหารวิชาการ">กลุ่มบริหารวิชาการ</option>
+          <option value="กลุ่มบริหารงบประมาณ">กลุ่มบริหารงบประมาณ</option>
+          <option value="กลุ่มบริหารงานบุคคล">กลุ่มบริหารงานบุคคล</option>
+          <option value="กลุ่มบริหารทั่วไป">กลุ่มบริหารทั่วไป</option>
+          <option value="กลุ่มกิจการนักเรียน">กลุ่มกิจการนักเรียน</option>
+          <option value="สำนักงานอำนวยการ">สำนักงานอำนวยการ</option>
+        </select>
+      </div>
 
       <div class="mb-3">
         <label>ผู้บันทึก</label>
@@ -117,17 +119,15 @@
 
 </div>
 
-<!-- Footer -->
 <footer id="main-footer">
   <small>© 2569 ระบบขอเลขคำสั่งโรงเรียน | พัฒนาโดยงานสารบรรณโรงเรียน</small>
 </footer>
 
-<!-- ===== Modal ===== -->
+<!-- Modal -->
 <div class="modal fade" id="resultModal" tabindex="-1">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content text-center p-4">
 
-      <!-- Loading -->
       <div id="modal-loading">
         <i class="bi bi-hourglass-split modal-icon text-primary"></i>
         <p class="mt-3">
@@ -136,7 +136,6 @@
         </p>
       </div>
 
-      <!-- Success -->
       <div id="modal-success" class="d-none">
         <i class="bi bi-check-circle-fill modal-icon text-success"></i>
         <h5 class="mt-3">ออกเลขสำเร็จ</h5>
@@ -146,7 +145,6 @@
         </button>
       </div>
 
-      <!-- Error -->
       <div id="modal-error" class="d-none">
         <i class="bi bi-x-circle-fill modal-icon text-danger"></i>
         <h5 class="mt-3">เกิดข้อผิดพลาด</h5>
@@ -160,8 +158,20 @@
   </div>
 </div>
 
-
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Choices.js -->
+<script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
 <script src="script.js?v=123"></script>
+<script>
+  // Initialize Choices.js
+  const departmentSelect = document.getElementById('department');
+  new Choices(departmentSelect, {
+    removeItemButton: true,
+    searchEnabled: true,
+    placeholderValue: 'เลือกหรือพิมพ์กลุ่มงาน',
+    shouldSort: false,
+    duplicateItemsAllowed: false,
+  });
+</script>
 </body>
 </html>
