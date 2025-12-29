@@ -20,15 +20,22 @@ const dashOnlineEl = document.getElementById("dash-online");
 const loginSpinnerEl = document.getElementById("loginSpinner");
 
 // ------------------ Choices.js ------------------
-// ปรับให้สามารถพิมพ์ชื่อใหม่ได้
 const departmentChoices = new Choices(departmentEl, {
   removeItemButton: true,
   searchEnabled: true,
   placeholderValue: 'เลือกหรือพิมพ์กลุ่มงาน',
   shouldSort: false,
   duplicateItemsAllowed: false,
-  addItems: true,
-  addItemFilter: null,
+  addItems: true, // ✅ ให้พิมพ์ชื่อใหม่ได้
+  choices: [
+    { value: 'กลุ่มบริหารวิชาการ', label: 'กลุ่มบริหารวิชาการ' },
+    { value: 'กลุ่มบริหารงบประมาณ', label: 'กลุ่มบริหารงบประมาณ' },
+    { value: 'กลุ่มบริหารงานบุคคล', label: 'กลุ่มบริหารงานบุคคล' },
+    { value: 'กลุ่มบริหารทั่วไป', label: 'กลุ่มบริหารทั่วไป' },
+    { value: 'กลุ่มกิจการนักเรียน', label: 'กลุ่มกิจการนักเรียน' },
+    { value: 'สำนักงานอำนวยการ', label: 'สำนักงานอำนวยการ' },
+    // เพิ่มตัวเลือกอื่น ๆ ตามต้องการ
+  ]
 });
 
 // ------------------ Helper ------------------
@@ -89,7 +96,7 @@ function validateForm(){
   if(!detailEl.value.trim()){ detailEl.classList.add("is-invalid"); valid = false; }
   else { detailEl.classList.remove("is-invalid"); }
 
-  // ✅ แก้ validation ของ department ให้ตรวจจากค่า Choices
+  // ✅ ตรวจจากค่า Choices
   const depValue = departmentChoices.getValue(true).trim();
   if(!depValue){ departmentEl.classList.add("is-invalid"); valid = false; }
   else { departmentEl.classList.remove("is-invalid"); }
