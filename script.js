@@ -193,11 +193,15 @@ function resetToLogin(){
 
   document.body.classList.remove("has-userform");
 
+  // ✅ แสดงการ์ดสืบค้นกลับมา
+  document.querySelector(".search-card")?.classList.remove("d-none");
+
   if(userEl.value){
     post({action:"deleteOnline", name:userEl.value});
   }
   userEl.value = "";
 }
+
 
 // ------------------ Submit ------------------
 function submitData(){
