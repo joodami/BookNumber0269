@@ -62,3 +62,27 @@ body {
 .modal-icon {
   font-size: 3rem;
 }
+
+/* ปรับการ์ดค้นหาให้เหมือน Login */
+.form-card .card-header {
+  background-color: #ffffff;
+  border-bottom: 1px solid #dee2e6;
+  font-size: 1.1rem;
+}
+
+.form-card .card-body p {
+  font-size: 1rem;
+  color: #495057;
+}
+
+.form-card .btn-info {
+  background-color: #0dcaf0;
+  border-color: #0dcaf0;
+  color: #fff;
+}
+
+.form-card .btn-info:hover {
+  background-color: #31d2f2;
+  border-color: #31d2f2;
+}
+
