@@ -20,6 +20,16 @@ const dashTodayEl = document.getElementById("dash-today");
 const dashOnlineEl = document.getElementById("dash-online");
 const loginSpinnerEl = document.getElementById("loginSpinner");
 
+// ------------------ ปุ่มสืบค้นคำสั่ง ------------------
+const btnSearchEl = document.getElementById("btn-search");
+function updateSearchButtonVisibility() {
+  if(userEl.value){ 
+    btnSearchEl.style.display = "none";
+  } else {
+    btnSearchEl.style.display = "block";
+  }
+}
+
 // ------------------ Department Other ------------------
 departmentEl.addEventListener("change", () => {
   if (departmentEl.value === "อื่นๆ") {
@@ -59,6 +69,8 @@ function login(){
       userformEl.classList.remove("invisible");
       document.body.classList.add("has-userform");
       post({action:"addOnline", name:res[0][1]});
+
+      updateSearchButtonVisibility();
     } else {
       passwordEl.classList.add("is-invalid");
       document.getElementById("password-feedback").innerText = "ข้อมูลไม่ถูกต้อง";
@@ -184,6 +196,8 @@ function resetToLogin(){
     post({action:"deleteOnline", name:userEl.value});
   }
   userEl.value = "";
+
+  updateSearchButtonVisibility();
 }
 
 // ------------------ Submit ------------------
@@ -268,6 +282,9 @@ document.addEventListener("DOMContentLoaded",()=>{
   });
 
   setInterval(checkSession, 10000);
+
+  // แสดงปุ่มสืบค้นตามสถานะ login
+  updateSearchButtonVisibility();
 });
 
 window.addEventListener("beforeunload", () => {
