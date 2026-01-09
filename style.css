@@ -1,3 +1,4 @@
+/* ================= Global ================= */
 body {
   font-family: 'Prompt', sans-serif;
   background: linear-gradient(180deg,#edf2f6,#dee7ee);
@@ -59,11 +60,11 @@ body {
   flex-shrink: 0;
 }
 
-/* ================= ปรับปุ่ม <a> ให้เหมือน <button> ================= */
+/* ================= Buttons ================= */
+/* ทำให้ <a> และ <button> ใช้ class btn ได้เหมือนกัน */
 .btn {
-  display: inline-block; /* ทำให้ปุ่มเป็น block/inline-block */
+  display: inline-block; /* block ถ้าต้องเต็มความกว้าง */
   font-weight: 500;
-  color: #fff;
   text-align: center;
   vertical-align: middle;
   user-select: none;
@@ -73,30 +74,41 @@ body {
   line-height: 1.5;
   border-radius: 0.375rem;
   transition: color 0.15s, background-color 0.15s, border-color 0.15s, box-shadow 0.15s;
-  text-decoration: none; /* ลบ underline สำหรับ <a> */
+  text-decoration: none; /* ป้องกัน underline สำหรับ <a> */
   cursor: pointer;
 }
 
-/* ปรับสีสำหรับปุ่ม primary */
+/* ปุ่มสีน้ำเงิน (btn-primary) */
 .btn-primary {
+  color: #fff;
   background-color: #0d6efd;
   border-color: #0d6efd;
 }
 
 .btn-primary:hover,
 .btn-primary:focus {
+  color: #fff;
   background-color: #0b5ed7;
   border-color: #0a58ca;
-  color: #fff;
   text-decoration: none;
 }
 
-/* รองรับปุ่มเต็มความกว้าง */
-.w-100 {
-  width: 100% !important;
+/* ปุ่มสีเขียว (btn-success) */
+.btn-success {
+  color: #fff;
+  background-color: #198754;
+  border-color: #198754;
 }
 
-/* ================= Modal Icon ================= */
+.btn-success:hover,
+.btn-success:focus {
+  color: #fff;
+  background-color: #157347;
+  border-color: #146c43;
+  text-decoration: none;
+}
+
+/* ================= Modal ================= */
 .modal-icon {
   font-size: 3rem;
 }
