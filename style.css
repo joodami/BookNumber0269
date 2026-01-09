@@ -1,3 +1,4 @@
+/* ================= Body ================= */
 body {
   font-family: 'Prompt', sans-serif;
   background: linear-gradient(180deg,#edf2f6,#dee7ee);
@@ -23,6 +24,7 @@ body {
   display: block;
 }
 
+/* ================= Dashboard ================= */
 .dashboard-row {
   display: flex;
   justify-content: space-between;
@@ -43,12 +45,58 @@ body {
   line-height: 1.2;
 }
 
+/* ================= Form Card ================= */
 .form-card {
   width: 100%;
   max-width: 1200px;
   margin: auto;
+  background-color: #ffffff;       /* สีพื้นหลังเหมือนกัน */
+  border-radius: 1rem;             /* โค้งมนเท่ากัน */
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1); /* เงาเหมือนกัน */
+  transition: transform 0.2s;
 }
 
+.form-card:hover {
+  transform: translateY(-3px);
+}
+
+.form-card .card-header {
+  background-color: #ffffff;
+  border-bottom: 1px solid #dee2e6;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+.form-card .card-body p {
+  font-size: 1rem;
+  color: #495057;
+}
+
+/* ================= Buttons ================= */
+.form-card .btn-primary,
+.form-card .btn-info,
+.form-card .btn-success {
+  width: 100%;
+  font-size: 1.1rem;
+  padding: 0.65rem;
+  border-radius: 0.5rem;
+  transition: all 0.2s;
+}
+
+.form-card .btn-primary:hover {
+  background-color: #0b5ed7;
+}
+
+.form-card .btn-info:hover {
+  background-color: #31d2f2;
+}
+
+.form-card .btn-success:hover {
+  background-color: #198754;
+}
+
+/* ================= Footer ================= */
 #main-footer {
   background: #f8f9fa;
   border-top: 1px solid #dee2e6;
@@ -59,30 +107,7 @@ body {
   flex-shrink: 0;
 }
 
+/* ================= Modal ================= */
 .modal-icon {
   font-size: 3rem;
 }
-
-/* ปรับการ์ดค้นหาให้เหมือน Login */
-.form-card .card-header {
-  background-color: #ffffff;
-  border-bottom: 1px solid #dee2e6;
-  font-size: 1.1rem;
-}
-
-.form-card .card-body p {
-  font-size: 1rem;
-  color: #495057;
-}
-
-.form-card .btn-info {
-  background-color: #0dcaf0;
-  border-color: #0dcaf0;
-  color: #fff;
-}
-
-.form-card .btn-info:hover {
-  background-color: #31d2f2;
-  border-color: #31d2f2;
-}
-
