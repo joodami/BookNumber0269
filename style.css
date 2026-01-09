@@ -107,6 +107,16 @@ body {
   flex-shrink: 0;
 }
 
+/* ===== แสดงการ์ดสืบค้นเฉพาะตอนยังไม่ login ===== */
+body.has-userform .search-card {
+  display: none !important;
+}
+
+body:not(.has-userform) .search-card {
+  display: block !important;
+}
+
+
 /* ================= Modal ================= */
 .modal-icon {
   font-size: 3rem;
