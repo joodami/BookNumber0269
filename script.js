@@ -42,6 +42,8 @@ function post(data){
 // ------------------ Login ------------------
 function login(){
   const pass = passwordEl.value.trim();
+
+  // ตรวจสอบรหัสว่าง
   if(!pass){
     passwordEl.classList.add("is-invalid");
     return;
@@ -49,17 +51,28 @@ function login(){
     passwordEl.classList.remove("is-invalid");
   }
 
+  // แสดง Spinner ขณะ login
   loginSpinnerEl.classList.remove("d-none");
 
   post({action:"login", password:pass}).then(res=>{
+    // ซ่อน Spinner หลัง login
     loginSpinnerEl.classList.add("d-none");
 
     if(res.length){
+      // กำหนดค่าผู้ใช้
       userEl.value = res[0][1];
+
+      // แสดงฟอร์มผู้ใช้
       userformEl.classList.remove("invisible");
       document.body.classList.add("has-userform");
+
+      // **ซ่อนการ์ดสืบค้นหลัง login**
+      document.querySelector(".search-card")?.classList.add("d-none");
+
+      // เพิ่มผู้ใช้ออนไลน์
       post({action:"addOnline", name:res[0][1]});
     } else {
+      // รหัสไม่ถูกต้อง
       passwordEl.classList.add("is-invalid");
       document.getElementById("password-feedback").innerText = "ข้อมูลไม่ถูกต้อง";
     }
