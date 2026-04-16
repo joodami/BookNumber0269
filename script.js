@@ -63,7 +63,7 @@ function login(){
       userEl.value = res[0][1];
 
       // แสดงฟอร์มผู้ใช้
-      userformEl.classList.remove("invisible");
+      userformEl.classList.remove("d-none");
       document.body.classList.add("has-userform");
 
       // **ซ่อนการ์ดสืบค้นหลัง login**
@@ -189,7 +189,8 @@ function resetToLogin(){
   departmentOtherEl.value = "";
   departmentOtherEl.classList.add("d-none");
   passwordEl.value = "";
-  userformEl.classList.add("invisible");
+  userformEl.classList.add("d-none");    // <--- เปลี่ยนให้เหมือนกับ HTML
+  userformEl.classList.remove("invisible"); // ล้างค่าเก่าออกด้วยเพื่อความชัวร์
 
   document.body.classList.remove("has-userform");
 
