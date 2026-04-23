@@ -27,7 +27,7 @@
             flex-direction: column;
         }
 
-        /* --- Header --- */
+        /* --- Header เหมือนต้นฉบับ --- */
         .app-header {
             background: #ffffff;
             text-align: center;
@@ -49,7 +49,8 @@
         .dash-number { font-size: 1.2rem; font-weight: 700; color: var(--primary); }
         .dash-label { font-size: 0.7rem; color: #94a3b8; text-transform: uppercase; }
 
-        /* --- Form Design --- */
+        /* --- Form Design (ปรับ max-width ให้เท่ากับหนังสือออก) --- */
+        .max-width-container { max-width: 1200px; margin: 0 auto; }
         .form-card { border: none; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.06); background: white; overflow: hidden; }
         .card-header-custom { background: var(--main-gradient); color: white; padding: 15px; font-weight: 600; text-align: center; }
         .form-control, .form-select { border-radius: 12px; padding: 12px; border: 2px solid #f1f5f9; background: #f8fafc; }
@@ -58,7 +59,8 @@
 
         .btn-primary-custom { background: var(--primary); border: none; border-radius: 12px; padding: 12px; font-weight: 600; transition: 0.3s; color: white; }
         .btn-primary-custom:hover { background: var(--accent); transform: translateY(-2px); color: white; }
-        .btn-success-custom { background: #15803d; border: none; border-radius: 12px; padding: 15px; color: white; font-weight: 600; }
+        .btn-success-custom { background: #15803d; border: none; border-radius: 12px; padding: 15px; color: white; font-weight: 600; transition: 0.3s; }
+        .btn-success-custom:hover { background: #166534; transform: translateY(-2px); }
 
         /* --- Modal --- */
         .modal-content { border-radius: 25px; border: none; }
@@ -71,11 +73,11 @@
 
 <header class="app-header">
     <img src="https://raw.githubusercontent.com/joodami/school-assets/main/logo.png" alt="Logo" class="school-logo">
-    <h1 class="app-title">PS-Sarabun</h1>
+    <h1 class="app-title">PS-Order</h1>
     <p class="app-subtitle">ระบบขอเลขคำสั่งโรงเรียน ปีพุทธศักราช 2569</p>
 </header>
 
-<div class="container pb-4" style="max-width: 800px;">
+<div class="container max-width-container pb-4">
     <div class="card dash-card mb-4">
         <div class="card-body">
             <div class="dashboard-row">
@@ -99,7 +101,7 @@
     </div>
 
     <div id="loginSection" class="form-card mx-auto" style="max-width: 400px;">
-        <div class="card-header-custom">ลงชื่อเข้าใช้ระบบ</div>
+        <div class="card-header-custom">ลงชื่อเข้าใช้ระบบ (คำสั่ง)</div>
         <div class="card-body p-4 text-center">
             <p class="small text-muted mb-4">กรุณาระบุหมายเลขโทรศัพท์เพื่อเข้าสู่ระบบ</p>
             <div class="position-relative mb-3 text-start">
